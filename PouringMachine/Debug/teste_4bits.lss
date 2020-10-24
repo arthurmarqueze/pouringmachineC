@@ -1,0 +1,1531 @@
+
+teste_4bits.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         000000f0  00800100  00000906  0000099a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000906  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000018  008001f0  008001f0  00000a8a  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000a8a  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000abc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000088  00000000  00000000  00000afc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001dd6  00000000  00000000  00000b84  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000986  00000000  00000000  0000295a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000af4  00000000  00000000  000032e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000014c  00000000  00000000  00003dd4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004fc  00000000  00000000  00003f20  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000dce  00000000  00000000  0000441c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000080  00000000  00000000  000051ea  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 2c 04 	jmp	0x858	; 0x858 <__vector_4>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e6 e0       	ldi	r30, 0x06	; 6
+  7c:	f9 e0       	ldi	r31, 0x09	; 9
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 3f       	cpi	r26, 0xF0	; 240
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	22 e0       	ldi	r18, 0x02	; 2
+  8c:	a0 ef       	ldi	r26, 0xF0	; 240
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a8 30       	cpi	r26, 0x08	; 8
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 1b 04 	call	0x836	; 0x836 <main>
+  9e:	0c 94 81 04 	jmp	0x902	; 0x902 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <cmd_LCD>:
+//---------------------------------------------------------------------------------------------
+// Sub-rotina para enviar caracteres e comandos ao LCD com via de dados de 4 bits
+//---------------------------------------------------------------------------------------------
+void cmd_LCD(unsigned char c, char cd)				//c é o dado  e cd indica se é instrução ou caractere
+{
+	if(cd==0)
+  a6:	61 11       	cpse	r22, r1
+  a8:	02 c0       	rjmp	.+4      	; 0xae <cmd_LCD+0x8>
+		clr_bit(CONTR_LCD,RS);
+  aa:	41 98       	cbi	0x08, 1	; 8
+  ac:	01 c0       	rjmp	.+2      	; 0xb0 <cmd_LCD+0xa>
+	else
+		set_bit(CONTR_LCD,RS);
+  ae:	41 9a       	sbi	0x08, 1	; 8
+
+	//primeiro nibble de dados - 4 MSB
+	#if (nibble_dados)								//compila código para os pinos de dados do LCD nos 4 MSB do PORT
+		DADOS_LCD = (DADOS_LCD & 0x0F)|(0xF0 & c);		
+  b0:	95 b1       	in	r25, 0x05	; 5
+  b2:	9f 70       	andi	r25, 0x0F	; 15
+  b4:	28 2f       	mov	r18, r24
+  b6:	20 7f       	andi	r18, 0xF0	; 240
+  b8:	92 2b       	or	r25, r18
+  ba:	95 b9       	out	0x05, r25	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  bc:	00 00       	nop
+	#else											//compila código para os pinos de dados do LCD nos 4 LSB do PORT
+		DADOS_LCD = (DADOS_LCD & 0xF0)|(c>>4);	
+	#endif
+	
+	pulso_enable();
+  be:	40 9a       	sbi	0x08, 0	; 8
+  c0:	00 00       	nop
+  c2:	40 98       	cbi	0x08, 0	; 8
+  c4:	4f e0       	ldi	r20, 0x0F	; 15
+  c6:	4a 95       	dec	r20
+  c8:	f1 f7       	brne	.-4      	; 0xc6 <cmd_LCD+0x20>
+
+	//segundo nibble de dados - 4 LSB
+	#if (nibble_dados)								//compila código para os pinos de dados do LCD nos 4 MSB do PORT
+		DADOS_LCD = (DADOS_LCD & 0x0F) | (0xF0 & (c<<4));		
+  ca:	25 b1       	in	r18, 0x05	; 5
+  cc:	92 2f       	mov	r25, r18
+  ce:	9f 70       	andi	r25, 0x0F	; 15
+  d0:	40 e1       	ldi	r20, 0x10	; 16
+  d2:	84 9f       	mul	r24, r20
+  d4:	90 01       	movw	r18, r0
+  d6:	11 24       	eor	r1, r1
+  d8:	29 2b       	or	r18, r25
+  da:	25 b9       	out	0x05, r18	; 5
+  dc:	00 00       	nop
+	#else											//compila código para os pinos de dados do LCD nos 4 LSB do PORT
+		DADOS_LCD = (DADOS_LCD & 0xF0) | (0x0F & c);
+	#endif
+	
+	pulso_enable();
+  de:	40 9a       	sbi	0x08, 0	; 8
+  e0:	00 00       	nop
+  e2:	40 98       	cbi	0x08, 0	; 8
+  e4:	9f e0       	ldi	r25, 0x0F	; 15
+  e6:	9a 95       	dec	r25
+  e8:	f1 f7       	brne	.-4      	; 0xe6 <cmd_LCD+0x40>
+	
+	if((cd==0) && (c<4))				//se for instrução de retorno ou limpeza espera LCD estar pronto
+  ea:	61 11       	cpse	r22, r1
+  ec:	08 c0       	rjmp	.+16     	; 0xfe <cmd_LCD+0x58>
+  ee:	84 30       	cpi	r24, 0x04	; 4
+  f0:	30 f4       	brcc	.+12     	; 0xfe <cmd_LCD+0x58>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  f2:	83 ef       	ldi	r24, 0xF3	; 243
+  f4:	91 e0       	ldi	r25, 0x01	; 1
+  f6:	01 97       	sbiw	r24, 0x01	; 1
+  f8:	f1 f7       	brne	.-4      	; 0xf6 <cmd_LCD+0x50>
+  fa:	00 c0       	rjmp	.+0      	; 0xfc <cmd_LCD+0x56>
+  fc:	00 00       	nop
+  fe:	08 95       	ret
+
+00000100 <inic_LCD_4bits>:
+//Sub-rotina para inicialização do LCD com via de dados de 4 bits
+//---------------------------------------------------------------------------------------------
+void inic_LCD_4bits()		//sequência ditada pelo fabricando do circuito integrado HD44780
+{							//o LCD será só escrito. Então, R/W é sempre zero.
+
+	clr_bit(CONTR_LCD,RS);	//RS em zero indicando que o dado para o LCD será uma instrução	
+ 100:	41 98       	cbi	0x08, 1	; 8
+	clr_bit(CONTR_LCD,E);	//pino de habilitação em zero
+ 102:	40 98       	cbi	0x08, 0	; 8
+ 104:	87 e8       	ldi	r24, 0x87	; 135
+ 106:	93 e1       	ldi	r25, 0x13	; 19
+ 108:	01 97       	sbiw	r24, 0x01	; 1
+ 10a:	f1 f7       	brne	.-4      	; 0x108 <inic_LCD_4bits+0x8>
+ 10c:	00 c0       	rjmp	.+0      	; 0x10e <inic_LCD_4bits+0xe>
+ 10e:	00 00       	nop
+	
+	_delay_ms(20);	 		//tempo para estabilizar a tensão do LCD, após VCC ultrapassar 4.5 V (na prática pode
+							//ser maior). 
+	//interface de 8 bits						
+	#if (nibble_dados)
+		DADOS_LCD = (DADOS_LCD & 0x0F) | 0x30;		
+ 110:	85 b1       	in	r24, 0x05	; 5
+ 112:	8f 70       	andi	r24, 0x0F	; 15
+ 114:	80 63       	ori	r24, 0x30	; 48
+ 116:	85 b9       	out	0x05, r24	; 5
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 118:	00 00       	nop
+	#else		
+		DADOS_LCD = (DADOS_LCD & 0xF0) | 0x03;		
+	#endif						
+							
+	pulso_enable();			//habilitação respeitando os tempos de resposta do LCD
+ 11a:	40 9a       	sbi	0x08, 0	; 8
+ 11c:	00 00       	nop
+ 11e:	40 98       	cbi	0x08, 0	; 8
+ 120:	9f e0       	ldi	r25, 0x0F	; 15
+ 122:	9a 95       	dec	r25
+ 124:	f1 f7       	brne	.-4      	; 0x122 <inic_LCD_4bits+0x22>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 126:	81 ee       	ldi	r24, 0xE1	; 225
+ 128:	94 e0       	ldi	r25, 0x04	; 4
+ 12a:	01 97       	sbiw	r24, 0x01	; 1
+ 12c:	f1 f7       	brne	.-4      	; 0x12a <inic_LCD_4bits+0x2a>
+ 12e:	00 c0       	rjmp	.+0      	; 0x130 <inic_LCD_4bits+0x30>
+ 130:	00 00       	nop
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 132:	00 00       	nop
+	_delay_ms(5);		
+	pulso_enable();
+ 134:	40 9a       	sbi	0x08, 0	; 8
+ 136:	00 00       	nop
+ 138:	40 98       	cbi	0x08, 0	; 8
+ 13a:	9f e0       	ldi	r25, 0x0F	; 15
+ 13c:	9a 95       	dec	r25
+ 13e:	f1 f7       	brne	.-4      	; 0x13c <inic_LCD_4bits+0x3c>
+ 140:	82 e4       	ldi	r24, 0x42	; 66
+ 142:	8a 95       	dec	r24
+ 144:	f1 f7       	brne	.-4      	; 0x142 <inic_LCD_4bits+0x42>
+ 146:	00 c0       	rjmp	.+0      	; 0x148 <inic_LCD_4bits+0x48>
+ 148:	00 00       	nop
+	_delay_us(200);
+	pulso_enable();	/*até aqui ainda é uma interface de 8 bits.
+ 14a:	40 9a       	sbi	0x08, 0	; 8
+ 14c:	00 00       	nop
+ 14e:	40 98       	cbi	0x08, 0	; 8
+ 150:	9f e0       	ldi	r25, 0x0F	; 15
+ 152:	9a 95       	dec	r25
+ 154:	f1 f7       	brne	.-4      	; 0x152 <inic_LCD_4bits+0x52>
+					estabilização da tensão (geralmente funciona). Se o LCD não for inicializado primeiro no 
+					modo de 8 bits, haverá problemas se o microcontrolador for inicializado e o display já o tiver sido.*/
+	
+	//interface de 4 bits, deve ser enviado duas vezes (a outra está abaixo)
+	#if (nibble_dados) 
+		DADOS_LCD = (DADOS_LCD & 0x0F) | 0x20;		
+ 156:	85 b1       	in	r24, 0x05	; 5
+ 158:	8f 70       	andi	r24, 0x0F	; 15
+ 15a:	80 62       	ori	r24, 0x20	; 32
+ 15c:	85 b9       	out	0x05, r24	; 5
+ 15e:	00 00       	nop
+	#else		
+		DADOS_LCD = (DADOS_LCD & 0xF0) | 0x02;
+	#endif
+	
+	pulso_enable();		
+ 160:	40 9a       	sbi	0x08, 0	; 8
+ 162:	00 00       	nop
+ 164:	40 98       	cbi	0x08, 0	; 8
+ 166:	8f e0       	ldi	r24, 0x0F	; 15
+ 168:	8a 95       	dec	r24
+ 16a:	f1 f7       	brne	.-4      	; 0x168 <inic_LCD_4bits+0x68>
+   	cmd_LCD(0x28,0); 		//interface de 4 bits 2 linhas (aqui se habilita as 2 linhas) 
+ 16c:	60 e0       	ldi	r22, 0x00	; 0
+ 16e:	88 e2       	ldi	r24, 0x28	; 40
+ 170:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+							//são enviados os 2 nibbles (0x2 e 0x8)
+   	cmd_LCD(0x08,0);		//desliga o display
+ 174:	60 e0       	ldi	r22, 0x00	; 0
+ 176:	88 e0       	ldi	r24, 0x08	; 8
+ 178:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+   	cmd_LCD(0x01,0);		//limpa todo o display
+ 17c:	60 e0       	ldi	r22, 0x00	; 0
+ 17e:	81 e0       	ldi	r24, 0x01	; 1
+ 180:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+   	cmd_LCD(0x0C,0);		//mensagem aparente cursor inativo não piscando   
+ 184:	60 e0       	ldi	r22, 0x00	; 0
+ 186:	8c e0       	ldi	r24, 0x0C	; 12
+ 188:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+   	cmd_LCD(0x80,0);		//inicializa cursor na primeira posição a esquerda - 1a linha
+ 18c:	60 e0       	ldi	r22, 0x00	; 0
+ 18e:	80 e8       	ldi	r24, 0x80	; 128
+ 190:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+ 194:	08 95       	ret
+
+00000196 <escreve_LCD>:
+}
+//---------------------------------------------------------------------------------------------
+//Sub-rotina de escrita no LCD -  dados armazenados na RAM
+//---------------------------------------------------------------------------------------------
+void escreve_LCD(char *c)
+{
+ 196:	cf 93       	push	r28
+ 198:	df 93       	push	r29
+ 19a:	ec 01       	movw	r28, r24
+   for (; *c!=0;c++) cmd_LCD(*c,1);
+ 19c:	88 81       	ld	r24, Y
+ 19e:	88 23       	and	r24, r24
+ 1a0:	39 f0       	breq	.+14     	; 0x1b0 <escreve_LCD+0x1a>
+ 1a2:	21 96       	adiw	r28, 0x01	; 1
+ 1a4:	61 e0       	ldi	r22, 0x01	; 1
+ 1a6:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+ 1aa:	89 91       	ld	r24, Y+
+ 1ac:	81 11       	cpse	r24, r1
+ 1ae:	fa cf       	rjmp	.-12     	; 0x1a4 <escreve_LCD+0xe>
+}
+ 1b0:	df 91       	pop	r29
+ 1b2:	cf 91       	pop	r28
+ 1b4:	08 95       	ret
+
+000001b6 <setup>:
+//.................................................................
+//Função setup
+
+void setup (void)
+{
+	DDRB = 0b11110111; //Definir entradas e saídas das portas B
+ 1b6:	87 ef       	ldi	r24, 0xF7	; 247
+ 1b8:	84 b9       	out	0x04, r24	; 4
+	DDRC = 0b00000011; //Definir entradas e saídas das portas C
+ 1ba:	83 e0       	ldi	r24, 0x03	; 3
+ 1bc:	87 b9       	out	0x07, r24	; 7
+	DDRD = 0b00000000; //Definir entradas e saídas das portas D
+ 1be:	1a b8       	out	0x0a, r1	; 10
+	
+	set_bit(PORTB,CILC);   //abre o cilindro C
+ 1c0:	2a 9a       	sbi	0x05, 2	; 5
+	clr_bit(PORTB,CILA);  //fecha o cilindro A
+ 1c2:	28 98       	cbi	0x05, 0	; 5
+	clr_bit(PORTB,CILB);  //fecha o cilindro B
+ 1c4:	29 98       	cbi	0x05, 1	; 5
+	
+	inic_LCD_4bits();  //inicializa LCD 4 Bits
+ 1c6:	0e 94 80 00 	call	0x100	; 0x100 <inic_LCD_4bits>
+ 1ca:	08 95       	ret
+
+000001cc <senha>:
+}
+
+
+
+void senha()
+{
+ 1cc:	af 92       	push	r10
+ 1ce:	bf 92       	push	r11
+ 1d0:	cf 92       	push	r12
+ 1d2:	df 92       	push	r13
+ 1d4:	ff 92       	push	r15
+ 1d6:	0f 93       	push	r16
+ 1d8:	1f 93       	push	r17
+ 1da:	cf 93       	push	r28
+ 1dc:	df 93       	push	r29
+ 1de:	cd b7       	in	r28, 0x3d	; 61
+ 1e0:	de b7       	in	r29, 0x3e	; 62
+ 1e2:	6a 97       	sbiw	r28, 0x1a	; 26
+ 1e4:	0f b6       	in	r0, 0x3f	; 63
+ 1e6:	f8 94       	cli
+ 1e8:	de bf       	out	0x3e, r29	; 62
+ 1ea:	0f be       	out	0x3f, r0	; 63
+ 1ec:	cd bf       	out	0x3d, r28	; 61
+	char senha_interna[5] = "1234";		//Definição da senha interna do usuário
+ 1ee:	85 e0       	ldi	r24, 0x05	; 5
+ 1f0:	e8 e3       	ldi	r30, 0x38	; 56
+ 1f2:	f1 e0       	ldi	r31, 0x01	; 1
+ 1f4:	de 01       	movw	r26, r28
+ 1f6:	11 96       	adiw	r26, 0x01	; 1
+ 1f8:	01 90       	ld	r0, Z+
+ 1fa:	0d 92       	st	X+, r0
+ 1fc:	8a 95       	dec	r24
+ 1fe:	e1 f7       	brne	.-8      	; 0x1f8 <senha+0x2c>
+	char senha_lida_teclado[5];			//Senha que será digitada pelo usuário
+	int k = 0;							//variável para o loop
+	char str_k[16];						//variável (char) para visualizar no LCD
+	char tecla;							//variável
+	cmd_LCD(0x01,0);					//comando do LCD para limpar
+ 200:	60 e0       	ldi	r22, 0x00	; 0
+ 202:	81 e0       	ldi	r24, 0x01	; 1
+ 204:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	cmd_LCD(0x80,0);					//comando do LCD para mover o cursor para a 1 linha
+ 208:	60 e0       	ldi	r22, 0x00	; 0
+ 20a:	80 e8       	ldi	r24, 0x80	; 128
+ 20c:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	escreve_LCD("Bem vindo!");			//escreve no LCD
+ 210:	80 e0       	ldi	r24, 0x00	; 0
+ 212:	91 e0       	ldi	r25, 0x01	; 1
+ 214:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 218:	2f e3       	ldi	r18, 0x3F	; 63
+ 21a:	82 e4       	ldi	r24, 0x42	; 66
+ 21c:	9f e0       	ldi	r25, 0x0F	; 15
+ 21e:	21 50       	subi	r18, 0x01	; 1
+ 220:	80 40       	sbci	r24, 0x00	; 0
+ 222:	90 40       	sbci	r25, 0x00	; 0
+ 224:	e1 f7       	brne	.-8      	; 0x21e <senha+0x52>
+ 226:	00 c0       	rjmp	.+0      	; 0x228 <senha+0x5c>
+ 228:	00 00       	nop
+	_delay_ms(5000);
+	cmd_LCD(0x01,0);
+ 22a:	60 e0       	ldi	r22, 0x00	; 0
+ 22c:	81 e0       	ldi	r24, 0x01	; 1
+ 22e:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	cmd_LCD(0x80,0);					//comando do LCD para mover o cursor para a 1 linha
+ 232:	60 e0       	ldi	r22, 0x00	; 0
+ 234:	80 e8       	ldi	r24, 0x80	; 128
+ 236:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	escreve_LCD("Digite a senha");		//escreve no LCD
+ 23a:	8b e0       	ldi	r24, 0x0B	; 11
+ 23c:	91 e0       	ldi	r25, 0x01	; 1
+ 23e:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 242:	ef e3       	ldi	r30, 0x3F	; 63
+ 244:	fd e0       	ldi	r31, 0x0D	; 13
+ 246:	23 e0       	ldi	r18, 0x03	; 3
+ 248:	e1 50       	subi	r30, 0x01	; 1
+ 24a:	f0 40       	sbci	r31, 0x00	; 0
+ 24c:	20 40       	sbci	r18, 0x00	; 0
+ 24e:	e1 f7       	brne	.-8      	; 0x248 <senha+0x7c>
+ 250:	00 c0       	rjmp	.+0      	; 0x252 <senha+0x86>
+ 252:	00 00       	nop
+ 254:	6e 01       	movw	r12, r28
+ 256:	86 e0       	ldi	r24, 0x06	; 6
+ 258:	c8 0e       	add	r12, r24
+ 25a:	d1 1c       	adc	r13, r1
+ 25c:	5e 01       	movw	r10, r28
+ 25e:	9a e0       	ldi	r25, 0x0A	; 10
+ 260:	a9 0e       	add	r10, r25
+ 262:	b1 1c       	adc	r11, r1
+ 264:	62 c0       	rjmp	.+196    	; 0x32a <senha+0x15e>
+	for(int contador = 0;contador<4;contador++) //como a senha é de 4 digitos, cria-se um contador para monitorar quantos digitos foram digitados
+	{
+		
+		while (rd_bit(PINC,ENTER_BUT) != 0) //caso seja apertado o botão enter
+		{
+			cmd_LCD(0xC0,0);			//comando do LCD para mover para a segunda linha
+ 266:	60 e0       	ldi	r22, 0x00	; 0
+ 268:	80 ec       	ldi	r24, 0xC0	; 192
+ 26a:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+			itoa(k,str_k,10);			//transforma int em char para mostrar no LCD
+ 26e:	4a e0       	ldi	r20, 0x0A	; 10
+ 270:	50 e0       	ldi	r21, 0x00	; 0
+ 272:	be 01       	movw	r22, r28
+ 274:	65 5f       	subi	r22, 0xF5	; 245
+ 276:	7f 4f       	sbci	r23, 0xFF	; 255
+ 278:	c8 01       	movw	r24, r16
+ 27a:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+			escreve_LCD(str_k);
+ 27e:	ce 01       	movw	r24, r28
+ 280:	0b 96       	adiw	r24, 0x0b	; 11
+ 282:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+			if (rd_bit(PIND,DOWN_BUT)==0)	//caso seja apertado o botão para baixo		
+ 286:	49 99       	sbic	0x09, 1	; 9
+ 288:	1a c0       	rjmp	.+52     	; 0x2be <senha+0xf2>
+			{
+				if (k > 0) {			//para evitar casos de numeros negativos
+ 28a:	10 16       	cp	r1, r16
+ 28c:	11 06       	cpc	r1, r17
+ 28e:	bc f4       	brge	.+46     	; 0x2be <senha+0xf2>
+					k = k - 1;			//subtrai um
+ 290:	01 50       	subi	r16, 0x01	; 1
+ 292:	11 09       	sbc	r17, r1
+					cmd_LCD(0xC0,0);
+ 294:	60 e0       	ldi	r22, 0x00	; 0
+ 296:	80 ec       	ldi	r24, 0xC0	; 192
+ 298:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+					itoa(k,str_k,10);	//transforma int em char para mostrar no LCD
+ 29c:	4a e0       	ldi	r20, 0x0A	; 10
+ 29e:	50 e0       	ldi	r21, 0x00	; 0
+ 2a0:	be 01       	movw	r22, r28
+ 2a2:	65 5f       	subi	r22, 0xF5	; 245
+ 2a4:	7f 4f       	sbci	r23, 0xFF	; 255
+ 2a6:	c8 01       	movw	r24, r16
+ 2a8:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+					escreve_LCD(str_k);
+ 2ac:	ce 01       	movw	r24, r28
+ 2ae:	0b 96       	adiw	r24, 0x0b	; 11
+ 2b0:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+					tecla = k + '0';	//como k é um int, para armazenar em um char, deve-se acrescentar +'0'
+ 2b4:	0f 2e       	mov	r0, r31
+ 2b6:	f0 e3       	ldi	r31, 0x30	; 48
+ 2b8:	ff 2e       	mov	r15, r31
+ 2ba:	f0 2d       	mov	r31, r0
+ 2bc:	f0 0e       	add	r15, r16
+ 2be:	ef e7       	ldi	r30, 0x7F	; 127
+ 2c0:	fa e1       	ldi	r31, 0x1A	; 26
+ 2c2:	26 e0       	ldi	r18, 0x06	; 6
+ 2c4:	e1 50       	subi	r30, 0x01	; 1
+ 2c6:	f0 40       	sbci	r31, 0x00	; 0
+ 2c8:	20 40       	sbci	r18, 0x00	; 0
+ 2ca:	e1 f7       	brne	.-8      	; 0x2c4 <senha+0xf8>
+ 2cc:	00 c0       	rjmp	.+0      	; 0x2ce <senha+0x102>
+ 2ce:	00 00       	nop
+				}
+			}
+			_delay_ms(2000);
+			if (rd_bit(PIND,UP_BUT)==0)  //caso seja apertado o botão para cima
+ 2d0:	48 99       	sbic	0x09, 0	; 9
+ 2d2:	1a c0       	rjmp	.+52     	; 0x308 <senha+0x13c>
+			{
+				if (k < 9) {			//para evitar casos maiores que 9
+ 2d4:	09 30       	cpi	r16, 0x09	; 9
+ 2d6:	11 05       	cpc	r17, r1
+ 2d8:	bc f4       	brge	.+46     	; 0x308 <senha+0x13c>
+					k = k + 1;			//adiciona 1 no valor de k
+ 2da:	0f 5f       	subi	r16, 0xFF	; 255
+ 2dc:	1f 4f       	sbci	r17, 0xFF	; 255
+					cmd_LCD(0xC0,0);	
+ 2de:	60 e0       	ldi	r22, 0x00	; 0
+ 2e0:	80 ec       	ldi	r24, 0xC0	; 192
+ 2e2:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+					itoa(k,str_k,10);	//transforma o valor de k em um char
+ 2e6:	4a e0       	ldi	r20, 0x0A	; 10
+ 2e8:	50 e0       	ldi	r21, 0x00	; 0
+ 2ea:	be 01       	movw	r22, r28
+ 2ec:	65 5f       	subi	r22, 0xF5	; 245
+ 2ee:	7f 4f       	sbci	r23, 0xFF	; 255
+ 2f0:	c8 01       	movw	r24, r16
+ 2f2:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+					escreve_LCD(str_k);	//escreve o char no LCD
+ 2f6:	ce 01       	movw	r24, r28
+ 2f8:	0b 96       	adiw	r24, 0x0b	; 11
+ 2fa:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+					tecla = k + '0';	//como k é um int, para armazenar em um char, deve-se acrescentar +'0'
+ 2fe:	0f 2e       	mov	r0, r31
+ 300:	f0 e3       	ldi	r31, 0x30	; 48
+ 302:	ff 2e       	mov	r15, r31
+ 304:	f0 2d       	mov	r31, r0
+ 306:	f0 0e       	add	r15, r16
+	escreve_LCD("Digite a senha");		//escreve no LCD
+	_delay_ms(1000);
+	for(int contador = 0;contador<4;contador++) //como a senha é de 4 digitos, cria-se um contador para monitorar quantos digitos foram digitados
+	{
+		
+		while (rd_bit(PINC,ENTER_BUT) != 0) //caso seja apertado o botão enter
+ 308:	35 99       	sbic	0x06, 5	; 6
+ 30a:	ad cf       	rjmp	.-166    	; 0x266 <senha+0x9a>
+ 30c:	8f e7       	ldi	r24, 0x7F	; 127
+ 30e:	9a e1       	ldi	r25, 0x1A	; 26
+ 310:	e6 e0       	ldi	r30, 0x06	; 6
+ 312:	81 50       	subi	r24, 0x01	; 1
+ 314:	90 40       	sbci	r25, 0x00	; 0
+ 316:	e0 40       	sbci	r30, 0x00	; 0
+ 318:	e1 f7       	brne	.-8      	; 0x312 <senha+0x146>
+ 31a:	00 c0       	rjmp	.+0      	; 0x31c <senha+0x150>
+ 31c:	00 00       	nop
+				}
+			}
+		}
+		k = 0;							//volta a ser zero quando pressionado enter para o entendimento do usuário que seu botão foi registrado
+		_delay_ms(2000);
+		senha_lida_teclado[contador] = tecla;	//armazena o valor de tecla no vetor na posição onde está o contador
+ 31e:	f6 01       	movw	r30, r12
+ 320:	f1 92       	st	Z+, r15
+ 322:	6f 01       	movw	r12, r30
+	_delay_ms(5000);
+	cmd_LCD(0x01,0);
+	cmd_LCD(0x80,0);					//comando do LCD para mover o cursor para a 1 linha
+	escreve_LCD("Digite a senha");		//escreve no LCD
+	_delay_ms(1000);
+	for(int contador = 0;contador<4;contador++) //como a senha é de 4 digitos, cria-se um contador para monitorar quantos digitos foram digitados
+ 324:	ea 15       	cp	r30, r10
+ 326:	fb 05       	cpc	r31, r11
+ 328:	19 f0       	breq	.+6      	; 0x330 <senha+0x164>
+}
+
+
+
+void senha()
+{
+ 32a:	00 e0       	ldi	r16, 0x00	; 0
+ 32c:	10 e0       	ldi	r17, 0x00	; 0
+ 32e:	ec cf       	rjmp	.-40     	; 0x308 <senha+0x13c>
+		}
+		k = 0;							//volta a ser zero quando pressionado enter para o entendimento do usuário que seu botão foi registrado
+		_delay_ms(2000);
+		senha_lida_teclado[contador] = tecla;	//armazena o valor de tecla no vetor na posição onde está o contador
+	}
+	senha_lida_teclado[5] = '\0';
+ 330:	1b 86       	std	Y+11, r1	; 0x0b
+ 332:	ff e3       	ldi	r31, 0x3F	; 63
+ 334:	22 e4       	ldi	r18, 0x42	; 66
+ 336:	8f e0       	ldi	r24, 0x0F	; 15
+ 338:	f1 50       	subi	r31, 0x01	; 1
+ 33a:	20 40       	sbci	r18, 0x00	; 0
+ 33c:	80 40       	sbci	r24, 0x00	; 0
+ 33e:	e1 f7       	brne	.-8      	; 0x338 <senha+0x16c>
+ 340:	00 c0       	rjmp	.+0      	; 0x342 <senha+0x176>
+ 342:	00 00       	nop
+	_delay_ms(5000);
+	if (strcmp(senha_interna,senha_lida_teclado) == 0) //compara a senha interna com a senha digitada pelo usuário
+ 344:	be 01       	movw	r22, r28
+ 346:	6a 5f       	subi	r22, 0xFA	; 250
+ 348:	7f 4f       	sbci	r23, 0xFF	; 255
+ 34a:	ce 01       	movw	r24, r28
+ 34c:	01 96       	adiw	r24, 0x01	; 1
+ 34e:	0e 94 38 04 	call	0x870	; 0x870 <strcmp>
+ 352:	89 2b       	or	r24, r25
+ 354:	c1 f4       	brne	.+48     	; 0x386 <senha+0x1ba>
+	{
+		cmd_LCD(0x01,0);
+ 356:	60 e0       	ldi	r22, 0x00	; 0
+ 358:	81 e0       	ldi	r24, 0x01	; 1
+ 35a:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+		cmd_LCD(0x80,0);
+ 35e:	60 e0       	ldi	r22, 0x00	; 0
+ 360:	80 e8       	ldi	r24, 0x80	; 128
+ 362:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+		escreve_LCD("Senha Correta");
+ 366:	8a e1       	ldi	r24, 0x1A	; 26
+ 368:	91 e0       	ldi	r25, 0x01	; 1
+ 36a:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 36e:	9f ef       	ldi	r25, 0xFF	; 255
+ 370:	e8 e0       	ldi	r30, 0x08	; 8
+ 372:	fd e3       	ldi	r31, 0x3D	; 61
+ 374:	91 50       	subi	r25, 0x01	; 1
+ 376:	e0 40       	sbci	r30, 0x00	; 0
+ 378:	f0 40       	sbci	r31, 0x00	; 0
+ 37a:	e1 f7       	brne	.-8      	; 0x374 <senha+0x1a8>
+ 37c:	00 c0       	rjmp	.+0      	; 0x37e <senha+0x1b2>
+ 37e:	00 00       	nop
+		_delay_ms(20000);
+		funcoes = configura;  //caso as senhas sejam iguais, irá para o case configura
+ 380:	10 92 f3 01 	sts	0x01F3, r1	; 0x8001f3 <funcoes>
+ 384:	17 c0       	rjmp	.+46     	; 0x3b4 <senha+0x1e8>
+	}
+	else
+	{
+		cmd_LCD(0x01,0);
+ 386:	60 e0       	ldi	r22, 0x00	; 0
+ 388:	81 e0       	ldi	r24, 0x01	; 1
+ 38a:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+		cmd_LCD(0x80,0);
+ 38e:	60 e0       	ldi	r22, 0x00	; 0
+ 390:	80 e8       	ldi	r24, 0x80	; 128
+ 392:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+		escreve_LCD("Senha incorreta");
+ 396:	88 e2       	ldi	r24, 0x28	; 40
+ 398:	91 e0       	ldi	r25, 0x01	; 1
+ 39a:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 39e:	2f ef       	ldi	r18, 0xFF	; 255
+ 3a0:	88 e0       	ldi	r24, 0x08	; 8
+ 3a2:	9d e3       	ldi	r25, 0x3D	; 61
+ 3a4:	21 50       	subi	r18, 0x01	; 1
+ 3a6:	80 40       	sbci	r24, 0x00	; 0
+ 3a8:	90 40       	sbci	r25, 0x00	; 0
+ 3aa:	e1 f7       	brne	.-8      	; 0x3a4 <senha+0x1d8>
+ 3ac:	00 c0       	rjmp	.+0      	; 0x3ae <senha+0x1e2>
+ 3ae:	00 00       	nop
+		_delay_ms(20000);
+		senha();  //caso contrário, irá voltar a função senha
+ 3b0:	0e 94 e6 00 	call	0x1cc	; 0x1cc <senha>
+	}
+}
+ 3b4:	6a 96       	adiw	r28, 0x1a	; 26
+ 3b6:	0f b6       	in	r0, 0x3f	; 63
+ 3b8:	f8 94       	cli
+ 3ba:	de bf       	out	0x3e, r29	; 62
+ 3bc:	0f be       	out	0x3f, r0	; 63
+ 3be:	cd bf       	out	0x3d, r28	; 61
+ 3c0:	df 91       	pop	r29
+ 3c2:	cf 91       	pop	r28
+ 3c4:	1f 91       	pop	r17
+ 3c6:	0f 91       	pop	r16
+ 3c8:	ff 90       	pop	r15
+ 3ca:	df 90       	pop	r13
+ 3cc:	cf 90       	pop	r12
+ 3ce:	bf 90       	pop	r11
+ 3d0:	af 90       	pop	r10
+ 3d2:	08 95       	ret
+
+000003d4 <configurar>:
+
+void configurar()
+{
+ 3d4:	0f 93       	push	r16
+ 3d6:	1f 93       	push	r17
+ 3d8:	cf 93       	push	r28
+ 3da:	df 93       	push	r29
+ 3dc:	cd b7       	in	r28, 0x3d	; 61
+ 3de:	de b7       	in	r29, 0x3e	; 62
+ 3e0:	a0 97       	sbiw	r28, 0x20	; 32
+ 3e2:	0f b6       	in	r0, 0x3f	; 63
+ 3e4:	f8 94       	cli
+ 3e6:	de bf       	out	0x3e, r29	; 62
+ 3e8:	0f be       	out	0x3f, r0	; 63
+ 3ea:	cd bf       	out	0x3d, r28	; 61
+	int i = 1;					//variável de contador para o tempo de envase
+	int j = 1;					//variável de contador para numero de pecas	
+	char str_i[16];				//criado para armazenar o numero do tempo de envae
+	char str_j[16];				//criado para armazenar o numero de pecas
+	cmd_LCD(0x01,0);
+ 3ec:	60 e0       	ldi	r22, 0x00	; 0
+ 3ee:	81 e0       	ldi	r24, 0x01	; 1
+ 3f0:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	cmd_LCD(0x80,0);
+ 3f4:	60 e0       	ldi	r22, 0x00	; 0
+ 3f6:	80 e8       	ldi	r24, 0x80	; 128
+ 3f8:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	escreve_LCD("Configuracao");
+ 3fc:	8d e3       	ldi	r24, 0x3D	; 61
+ 3fe:	91 e0       	ldi	r25, 0x01	; 1
+ 400:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 404:	2f e7       	ldi	r18, 0x7F	; 127
+ 406:	84 e8       	ldi	r24, 0x84	; 132
+ 408:	9e e1       	ldi	r25, 0x1E	; 30
+ 40a:	21 50       	subi	r18, 0x01	; 1
+ 40c:	80 40       	sbci	r24, 0x00	; 0
+ 40e:	90 40       	sbci	r25, 0x00	; 0
+ 410:	e1 f7       	brne	.-8      	; 0x40a <__LOCK_REGION_LENGTH__+0xa>
+ 412:	00 c0       	rjmp	.+0      	; 0x414 <__LOCK_REGION_LENGTH__+0x14>
+ 414:	00 00       	nop
+	_delay_ms(10000);
+	cmd_LCD(0x01,0);
+ 416:	60 e0       	ldi	r22, 0x00	; 0
+ 418:	81 e0       	ldi	r24, 0x01	; 1
+ 41a:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	cmd_LCD(0x80,0);
+ 41e:	60 e0       	ldi	r22, 0x00	; 0
+ 420:	80 e8       	ldi	r24, 0x80	; 128
+ 422:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	escreve_LCD("Tempo de envase");
+ 426:	8a e4       	ldi	r24, 0x4A	; 74
+ 428:	91 e0       	ldi	r25, 0x01	; 1
+ 42a:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+	cmd_LCD(0xC0,0);
+ 42e:	60 e0       	ldi	r22, 0x00	; 0
+ 430:	80 ec       	ldi	r24, 0xC0	; 192
+ 432:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	itoa(i,str_i,10);
+ 436:	4a e0       	ldi	r20, 0x0A	; 10
+ 438:	50 e0       	ldi	r21, 0x00	; 0
+ 43a:	be 01       	movw	r22, r28
+ 43c:	6f 5f       	subi	r22, 0xFF	; 255
+ 43e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 440:	81 e0       	ldi	r24, 0x01	; 1
+ 442:	90 e0       	ldi	r25, 0x00	; 0
+ 444:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+	escreve_LCD(str_i);
+ 448:	ce 01       	movw	r24, r28
+ 44a:	01 96       	adiw	r24, 0x01	; 1
+ 44c:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+	cmd_LCD(0xC4,0);					//posiciona o cursos na 4 posição da segunda linha
+ 450:	60 e0       	ldi	r22, 0x00	; 0
+ 452:	84 ec       	ldi	r24, 0xC4	; 196
+ 454:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	escreve_LCD("segundos");
+ 458:	8a e5       	ldi	r24, 0x5A	; 90
+ 45a:	91 e0       	ldi	r25, 0x01	; 1
+ 45c:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+	while (rd_bit(PINC,ENTER_BUT) != 0) //enquanto o botão de enter não for pressionado significa que o usuário ainda está interagindo procurando o tempo que deseja
+ 460:	35 9b       	sbis	0x06, 5	; 6
+ 462:	45 c0       	rjmp	.+138    	; 0x4ee <__LOCK_REGION_LENGTH__+0xee>
+ 464:	01 e0       	ldi	r16, 0x01	; 1
+ 466:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		if (rd_bit(PIND,DOWN_BUT)==0)	//caso seja pressionado o botão inferior, o número do tempo em segundos diminui.
+ 468:	49 99       	sbic	0x09, 1	; 9
+ 46a:	15 c0       	rjmp	.+42     	; 0x496 <__LOCK_REGION_LENGTH__+0x96>
+		{  
+			if (i > 1) {				//caso o número seja maior que um, para evitar casos negativos e 0
+ 46c:	02 30       	cpi	r16, 0x02	; 2
+ 46e:	11 05       	cpc	r17, r1
+ 470:	94 f0       	brlt	.+36     	; 0x496 <__LOCK_REGION_LENGTH__+0x96>
+				i = i - 1;
+ 472:	01 50       	subi	r16, 0x01	; 1
+ 474:	11 09       	sbc	r17, r1
+				cmd_LCD(0xC0,0);
+ 476:	60 e0       	ldi	r22, 0x00	; 0
+ 478:	80 ec       	ldi	r24, 0xC0	; 192
+ 47a:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				itoa(i,str_i,10);
+ 47e:	4a e0       	ldi	r20, 0x0A	; 10
+ 480:	50 e0       	ldi	r21, 0x00	; 0
+ 482:	be 01       	movw	r22, r28
+ 484:	6f 5f       	subi	r22, 0xFF	; 255
+ 486:	7f 4f       	sbci	r23, 0xFF	; 255
+ 488:	c8 01       	movw	r24, r16
+ 48a:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+				escreve_LCD(str_i);
+ 48e:	ce 01       	movw	r24, r28
+ 490:	01 96       	adiw	r24, 0x01	; 1
+ 492:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 496:	2f e3       	ldi	r18, 0x3F	; 63
+ 498:	8d e0       	ldi	r24, 0x0D	; 13
+ 49a:	93 e0       	ldi	r25, 0x03	; 3
+ 49c:	21 50       	subi	r18, 0x01	; 1
+ 49e:	80 40       	sbci	r24, 0x00	; 0
+ 4a0:	90 40       	sbci	r25, 0x00	; 0
+ 4a2:	e1 f7       	brne	.-8      	; 0x49c <__LOCK_REGION_LENGTH__+0x9c>
+ 4a4:	00 c0       	rjmp	.+0      	; 0x4a6 <__LOCK_REGION_LENGTH__+0xa6>
+ 4a6:	00 00       	nop
+			}
+		}
+		_delay_ms(1000);
+		if (rd_bit(PIND,UP_BUT)==0) //caso seja pressionado o botão superior, o número do tempo em segundos aumenta
+ 4a8:	48 99       	sbic	0x09, 0	; 9
+ 4aa:	15 c0       	rjmp	.+42     	; 0x4d6 <__LOCK_REGION_LENGTH__+0xd6>
+		{
+			if (i < 99) {			//caso o número seja menor que 99, para evitar casos acima
+ 4ac:	03 36       	cpi	r16, 0x63	; 99
+ 4ae:	11 05       	cpc	r17, r1
+ 4b0:	94 f4       	brge	.+36     	; 0x4d6 <__LOCK_REGION_LENGTH__+0xd6>
+				i = i + 1;
+ 4b2:	0f 5f       	subi	r16, 0xFF	; 255
+ 4b4:	1f 4f       	sbci	r17, 0xFF	; 255
+				cmd_LCD(0xC0,0);
+ 4b6:	60 e0       	ldi	r22, 0x00	; 0
+ 4b8:	80 ec       	ldi	r24, 0xC0	; 192
+ 4ba:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				itoa(i,str_i,10);
+ 4be:	4a e0       	ldi	r20, 0x0A	; 10
+ 4c0:	50 e0       	ldi	r21, 0x00	; 0
+ 4c2:	be 01       	movw	r22, r28
+ 4c4:	6f 5f       	subi	r22, 0xFF	; 255
+ 4c6:	7f 4f       	sbci	r23, 0xFF	; 255
+ 4c8:	c8 01       	movw	r24, r16
+ 4ca:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+				escreve_LCD(str_i);
+ 4ce:	ce 01       	movw	r24, r28
+ 4d0:	01 96       	adiw	r24, 0x01	; 1
+ 4d2:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 4d6:	2f e3       	ldi	r18, 0x3F	; 63
+ 4d8:	8d e0       	ldi	r24, 0x0D	; 13
+ 4da:	93 e0       	ldi	r25, 0x03	; 3
+ 4dc:	21 50       	subi	r18, 0x01	; 1
+ 4de:	80 40       	sbci	r24, 0x00	; 0
+ 4e0:	90 40       	sbci	r25, 0x00	; 0
+ 4e2:	e1 f7       	brne	.-8      	; 0x4dc <__LOCK_REGION_LENGTH__+0xdc>
+ 4e4:	00 c0       	rjmp	.+0      	; 0x4e6 <__LOCK_REGION_LENGTH__+0xe6>
+ 4e6:	00 00       	nop
+	cmd_LCD(0xC0,0);
+	itoa(i,str_i,10);
+	escreve_LCD(str_i);
+	cmd_LCD(0xC4,0);					//posiciona o cursos na 4 posição da segunda linha
+	escreve_LCD("segundos");
+	while (rd_bit(PINC,ENTER_BUT) != 0) //enquanto o botão de enter não for pressionado significa que o usuário ainda está interagindo procurando o tempo que deseja
+ 4e8:	35 99       	sbic	0x06, 5	; 6
+ 4ea:	be cf       	rjmp	.-132    	; 0x468 <__LOCK_REGION_LENGTH__+0x68>
+ 4ec:	02 c0       	rjmp	.+4      	; 0x4f2 <__LOCK_REGION_LENGTH__+0xf2>
+	}
+}
+
+void configurar()
+{
+	int i = 1;					//variável de contador para o tempo de envase
+ 4ee:	01 e0       	ldi	r16, 0x01	; 1
+ 4f0:	10 e0       	ldi	r17, 0x00	; 0
+ 4f2:	2f e7       	ldi	r18, 0x7F	; 127
+ 4f4:	8a e1       	ldi	r24, 0x1A	; 26
+ 4f6:	96 e0       	ldi	r25, 0x06	; 6
+ 4f8:	21 50       	subi	r18, 0x01	; 1
+ 4fa:	80 40       	sbci	r24, 0x00	; 0
+ 4fc:	90 40       	sbci	r25, 0x00	; 0
+ 4fe:	e1 f7       	brne	.-8      	; 0x4f8 <__LOCK_REGION_LENGTH__+0xf8>
+ 500:	00 c0       	rjmp	.+0      	; 0x502 <__LOCK_REGION_LENGTH__+0x102>
+ 502:	00 00       	nop
+			}
+		}
+		_delay_ms(1000);
+	}
+	_delay_ms(2000);
+	tempo_envase = i;				//define o tempo de envase como a variável i controlada pelo usuário.
+ 504:	10 93 07 02 	sts	0x0207, r17	; 0x800207 <tempo_envase+0x1>
+ 508:	00 93 06 02 	sts	0x0206, r16	; 0x800206 <tempo_envase>
+	cmd_LCD(0x01,0);
+ 50c:	60 e0       	ldi	r22, 0x00	; 0
+ 50e:	81 e0       	ldi	r24, 0x01	; 1
+ 510:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	cmd_LCD(0x80,0);
+ 514:	60 e0       	ldi	r22, 0x00	; 0
+ 516:	80 e8       	ldi	r24, 0x80	; 128
+ 518:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	escreve_LCD("Tamanho Lote");
+ 51c:	83 e6       	ldi	r24, 0x63	; 99
+ 51e:	91 e0       	ldi	r25, 0x01	; 1
+ 520:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+	cmd_LCD(0xC0,0);
+ 524:	60 e0       	ldi	r22, 0x00	; 0
+ 526:	80 ec       	ldi	r24, 0xC0	; 192
+ 528:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	itoa(j,str_j,10);
+ 52c:	4a e0       	ldi	r20, 0x0A	; 10
+ 52e:	50 e0       	ldi	r21, 0x00	; 0
+ 530:	be 01       	movw	r22, r28
+ 532:	6f 5e       	subi	r22, 0xEF	; 239
+ 534:	7f 4f       	sbci	r23, 0xFF	; 255
+ 536:	81 e0       	ldi	r24, 0x01	; 1
+ 538:	90 e0       	ldi	r25, 0x00	; 0
+ 53a:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+	escreve_LCD(str_j);
+ 53e:	ce 01       	movw	r24, r28
+ 540:	41 96       	adiw	r24, 0x11	; 17
+ 542:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+	cmd_LCD(0xC4,0);
+ 546:	60 e0       	ldi	r22, 0x00	; 0
+ 548:	84 ec       	ldi	r24, 0xC4	; 196
+ 54a:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	escreve_LCD("pecas");
+ 54e:	80 e7       	ldi	r24, 0x70	; 112
+ 550:	91 e0       	ldi	r25, 0x01	; 1
+ 552:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+	while (rd_bit(PINC,ENTER_BUT) != 0)	//enquanto o botão de enter não for pressionado significa que o usuário ainda está interagindo procurando o numero de pecas que deseja
+ 556:	35 9b       	sbis	0x06, 5	; 6
+ 558:	45 c0       	rjmp	.+138    	; 0x5e4 <__LOCK_REGION_LENGTH__+0x1e4>
+ 55a:	01 e0       	ldi	r16, 0x01	; 1
+ 55c:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		if (rd_bit(PIND,DOWN_BUT)==0) //caso seja pressionado o botão inferior, o número de pecas diminui.
+ 55e:	49 99       	sbic	0x09, 1	; 9
+ 560:	15 c0       	rjmp	.+42     	; 0x58c <__LOCK_REGION_LENGTH__+0x18c>
+		{
+			if (j > 1) {			//para evitar caso o numero de peças for numeros negativos e 0
+ 562:	02 30       	cpi	r16, 0x02	; 2
+ 564:	11 05       	cpc	r17, r1
+ 566:	94 f0       	brlt	.+36     	; 0x58c <__LOCK_REGION_LENGTH__+0x18c>
+				j = j - 1;
+ 568:	01 50       	subi	r16, 0x01	; 1
+ 56a:	11 09       	sbc	r17, r1
+				cmd_LCD(0xC0,0);
+ 56c:	60 e0       	ldi	r22, 0x00	; 0
+ 56e:	80 ec       	ldi	r24, 0xC0	; 192
+ 570:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				itoa(j,str_j,10);
+ 574:	4a e0       	ldi	r20, 0x0A	; 10
+ 576:	50 e0       	ldi	r21, 0x00	; 0
+ 578:	be 01       	movw	r22, r28
+ 57a:	6f 5e       	subi	r22, 0xEF	; 239
+ 57c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 57e:	c8 01       	movw	r24, r16
+ 580:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+				escreve_LCD(str_j);
+ 584:	ce 01       	movw	r24, r28
+ 586:	41 96       	adiw	r24, 0x11	; 17
+ 588:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 58c:	2f e7       	ldi	r18, 0x7F	; 127
+ 58e:	8a e1       	ldi	r24, 0x1A	; 26
+ 590:	96 e0       	ldi	r25, 0x06	; 6
+ 592:	21 50       	subi	r18, 0x01	; 1
+ 594:	80 40       	sbci	r24, 0x00	; 0
+ 596:	90 40       	sbci	r25, 0x00	; 0
+ 598:	e1 f7       	brne	.-8      	; 0x592 <__LOCK_REGION_LENGTH__+0x192>
+ 59a:	00 c0       	rjmp	.+0      	; 0x59c <__LOCK_REGION_LENGTH__+0x19c>
+ 59c:	00 00       	nop
+			}
+		}
+		_delay_ms(2000);
+		if (rd_bit(PIND,UP_BUT)==0) //caso seja pressionado o botão superior, o número de pecas aumenta.
+ 59e:	48 99       	sbic	0x09, 0	; 9
+ 5a0:	15 c0       	rjmp	.+42     	; 0x5cc <__LOCK_REGION_LENGTH__+0x1cc>
+		{
+			if (j < 24) {			//para evitar caso o número de peças seja maior que 24
+ 5a2:	08 31       	cpi	r16, 0x18	; 24
+ 5a4:	11 05       	cpc	r17, r1
+ 5a6:	94 f4       	brge	.+36     	; 0x5cc <__LOCK_REGION_LENGTH__+0x1cc>
+				j = j + 1;
+ 5a8:	0f 5f       	subi	r16, 0xFF	; 255
+ 5aa:	1f 4f       	sbci	r17, 0xFF	; 255
+				cmd_LCD(0xC0,0);
+ 5ac:	60 e0       	ldi	r22, 0x00	; 0
+ 5ae:	80 ec       	ldi	r24, 0xC0	; 192
+ 5b0:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				itoa(j,str_j,10);
+ 5b4:	4a e0       	ldi	r20, 0x0A	; 10
+ 5b6:	50 e0       	ldi	r21, 0x00	; 0
+ 5b8:	be 01       	movw	r22, r28
+ 5ba:	6f 5e       	subi	r22, 0xEF	; 239
+ 5bc:	7f 4f       	sbci	r23, 0xFF	; 255
+ 5be:	c8 01       	movw	r24, r16
+ 5c0:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+				escreve_LCD(str_j);
+ 5c4:	ce 01       	movw	r24, r28
+ 5c6:	41 96       	adiw	r24, 0x11	; 17
+ 5c8:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 5cc:	2f e7       	ldi	r18, 0x7F	; 127
+ 5ce:	8a e1       	ldi	r24, 0x1A	; 26
+ 5d0:	96 e0       	ldi	r25, 0x06	; 6
+ 5d2:	21 50       	subi	r18, 0x01	; 1
+ 5d4:	80 40       	sbci	r24, 0x00	; 0
+ 5d6:	90 40       	sbci	r25, 0x00	; 0
+ 5d8:	e1 f7       	brne	.-8      	; 0x5d2 <__LOCK_REGION_LENGTH__+0x1d2>
+ 5da:	00 c0       	rjmp	.+0      	; 0x5dc <__LOCK_REGION_LENGTH__+0x1dc>
+ 5dc:	00 00       	nop
+	cmd_LCD(0xC0,0);
+	itoa(j,str_j,10);
+	escreve_LCD(str_j);
+	cmd_LCD(0xC4,0);
+	escreve_LCD("pecas");
+	while (rd_bit(PINC,ENTER_BUT) != 0)	//enquanto o botão de enter não for pressionado significa que o usuário ainda está interagindo procurando o numero de pecas que deseja
+ 5de:	35 99       	sbic	0x06, 5	; 6
+ 5e0:	be cf       	rjmp	.-132    	; 0x55e <__LOCK_REGION_LENGTH__+0x15e>
+ 5e2:	02 c0       	rjmp	.+4      	; 0x5e8 <__LOCK_REGION_LENGTH__+0x1e8>
+}
+
+void configurar()
+{
+	int i = 1;					//variável de contador para o tempo de envase
+	int j = 1;					//variável de contador para numero de pecas	
+ 5e4:	01 e0       	ldi	r16, 0x01	; 1
+ 5e6:	10 e0       	ldi	r17, 0x00	; 0
+ 5e8:	2f e7       	ldi	r18, 0x7F	; 127
+ 5ea:	8a e1       	ldi	r24, 0x1A	; 26
+ 5ec:	96 e0       	ldi	r25, 0x06	; 6
+ 5ee:	21 50       	subi	r18, 0x01	; 1
+ 5f0:	80 40       	sbci	r24, 0x00	; 0
+ 5f2:	90 40       	sbci	r25, 0x00	; 0
+ 5f4:	e1 f7       	brne	.-8      	; 0x5ee <__LOCK_REGION_LENGTH__+0x1ee>
+ 5f6:	00 c0       	rjmp	.+0      	; 0x5f8 <__LOCK_REGION_LENGTH__+0x1f8>
+ 5f8:	00 00       	nop
+			}
+		}
+		_delay_ms(2000);
+	}
+	_delay_ms(2000);
+	tamanho_lote = j;				//define o tamanho de pecas do lote como a variável j, controlada pelo usuário
+ 5fa:	10 93 f5 01 	sts	0x01F5, r17	; 0x8001f5 <tamanho_lote+0x1>
+ 5fe:	00 93 f4 01 	sts	0x01F4, r16	; 0x8001f4 <tamanho_lote>
+	cmd_LCD(0x01,0);
+ 602:	60 e0       	ldi	r22, 0x00	; 0
+ 604:	81 e0       	ldi	r24, 0x01	; 1
+ 606:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	cmd_LCD(0x80,0);
+ 60a:	60 e0       	ldi	r22, 0x00	; 0
+ 60c:	80 e8       	ldi	r24, 0x80	; 128
+ 60e:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+	escreve_LCD("START p/ iniciar");
+ 612:	86 e7       	ldi	r24, 0x76	; 118
+ 614:	91 e0       	ldi	r25, 0x01	; 1
+ 616:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+	while(rd_bit(PINC,START_STOP_BUT) != 0)		//enquanto o botão START não for pressionado, a máquina continuará esperando
+ 61a:	34 99       	sbic	0x06, 4	; 6
+ 61c:	fe cf       	rjmp	.-4      	; 0x61a <__LOCK_REGION_LENGTH__+0x21a>
+ 61e:	2f e7       	ldi	r18, 0x7F	; 127
+ 620:	8a e1       	ldi	r24, 0x1A	; 26
+ 622:	96 e0       	ldi	r25, 0x06	; 6
+ 624:	21 50       	subi	r18, 0x01	; 1
+ 626:	80 40       	sbci	r24, 0x00	; 0
+ 628:	90 40       	sbci	r25, 0x00	; 0
+ 62a:	e1 f7       	brne	.-8      	; 0x624 <__LOCK_REGION_LENGTH__+0x224>
+ 62c:	00 c0       	rjmp	.+0      	; 0x62e <__LOCK_REGION_LENGTH__+0x22e>
+ 62e:	00 00       	nop
+	{
+	}
+	_delay_ms(2000);
+	funcoes = aguarda;				//caso seja clicado start, vai para o case aguarda
+ 630:	81 e0       	ldi	r24, 0x01	; 1
+ 632:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <funcoes>
+}
+ 636:	a0 96       	adiw	r28, 0x20	; 32
+ 638:	0f b6       	in	r0, 0x3f	; 63
+ 63a:	f8 94       	cli
+ 63c:	de bf       	out	0x3e, r29	; 62
+ 63e:	0f be       	out	0x3f, r0	; 63
+ 640:	cd bf       	out	0x3d, r28	; 61
+ 642:	df 91       	pop	r29
+ 644:	cf 91       	pop	r28
+ 646:	1f 91       	pop	r17
+ 648:	0f 91       	pop	r16
+ 64a:	08 95       	ret
+
+0000064c <loop>:
+
+void loop()
+{
+	switch(funcoes)				
+ 64c:	80 91 f3 01 	lds	r24, 0x01F3	; 0x8001f3 <funcoes>
+ 650:	82 30       	cpi	r24, 0x02	; 2
+ 652:	09 f4       	brne	.+2      	; 0x656 <loop+0xa>
+ 654:	6e c0       	rjmp	.+220    	; 0x732 <loop+0xe6>
+ 656:	28 f4       	brcc	.+10     	; 0x662 <loop+0x16>
+ 658:	88 23       	and	r24, r24
+ 65a:	51 f0       	breq	.+20     	; 0x670 <loop+0x24>
+ 65c:	81 30       	cpi	r24, 0x01	; 1
+ 65e:	59 f0       	breq	.+22     	; 0x676 <loop+0x2a>
+ 660:	08 95       	ret
+ 662:	83 30       	cpi	r24, 0x03	; 3
+ 664:	09 f4       	brne	.+2      	; 0x668 <loop+0x1c>
+ 666:	87 c0       	rjmp	.+270    	; 0x776 <loop+0x12a>
+ 668:	84 30       	cpi	r24, 0x04	; 4
+ 66a:	09 f4       	brne	.+2      	; 0x66e <loop+0x22>
+ 66c:	b9 c0       	rjmp	.+370    	; 0x7e0 <loop+0x194>
+ 66e:	08 95       	ret
+	{
+		case configura:
+			configurar();
+ 670:	0e 94 ea 01 	call	0x3d4	; 0x3d4 <configurar>
+		break;
+ 674:	08 95       	ret
+		
+		case aguarda:
+			if (contador_lotes < tamanho_lote)				//caso o contador de lotes já realizados seja maior do que o digitado pelo usuário
+ 676:	20 91 f1 01 	lds	r18, 0x01F1	; 0x8001f1 <contador_lotes>
+ 67a:	30 91 f2 01 	lds	r19, 0x01F2	; 0x8001f2 <contador_lotes+0x1>
+ 67e:	80 91 f4 01 	lds	r24, 0x01F4	; 0x8001f4 <tamanho_lote>
+ 682:	90 91 f5 01 	lds	r25, 0x01F5	; 0x8001f5 <tamanho_lote+0x1>
+ 686:	28 17       	cp	r18, r24
+ 688:	39 07       	cpc	r19, r25
+ 68a:	7c f5       	brge	.+94     	; 0x6ea <loop+0x9e>
+			{
+				cmd_LCD(0x80,0);
+ 68c:	60 e0       	ldi	r22, 0x00	; 0
+ 68e:	80 e8       	ldi	r24, 0x80	; 128
+ 690:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				escreve_LCD("Aguardando peca  ");
+ 694:	87 e8       	ldi	r24, 0x87	; 135
+ 696:	91 e0       	ldi	r25, 0x01	; 1
+ 698:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+				itoa(contador_lotes,c_cont_lotes,10);
+ 69c:	4a e0       	ldi	r20, 0x0A	; 10
+ 69e:	50 e0       	ldi	r21, 0x00	; 0
+ 6a0:	66 ef       	ldi	r22, 0xF6	; 246
+ 6a2:	71 e0       	ldi	r23, 0x01	; 1
+ 6a4:	80 91 f1 01 	lds	r24, 0x01F1	; 0x8001f1 <contador_lotes>
+ 6a8:	90 91 f2 01 	lds	r25, 0x01F2	; 0x8001f2 <contador_lotes+0x1>
+ 6ac:	0e 94 41 04 	call	0x882	; 0x882 <itoa>
+				cmd_LCD(0xC0,0);
+ 6b0:	60 e0       	ldi	r22, 0x00	; 0
+ 6b2:	80 ec       	ldi	r24, 0xC0	; 192
+ 6b4:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				escreve_LCD("Num. Pecas:");
+ 6b8:	89 e9       	ldi	r24, 0x99	; 153
+ 6ba:	91 e0       	ldi	r25, 0x01	; 1
+ 6bc:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+				escreve_LCD(c_cont_lotes);
+ 6c0:	86 ef       	ldi	r24, 0xF6	; 246
+ 6c2:	91 e0       	ldi	r25, 0x01	; 1
+ 6c4:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+				
+				set_bit(PORTB,CILC);					//abre o cilindro C
+ 6c8:	2a 9a       	sbi	0x05, 2	; 5
+				clr_bit(PORTB,CILA);					//fecha o cilindro A
+ 6ca:	28 98       	cbi	0x05, 0	; 5
+				clr_bit(PORTB,CILB);					//fecha o cilindro B
+ 6cc:	29 98       	cbi	0x05, 1	; 5
+				if(((rd_bit(PIND,A0)) == 0) && ((rd_bit(PIND,B0)) == 0) && ((rd_bit(PINB,C1)) == 0) && ((rd_bit(PIND,SP)) == 0)) //caso os sensores A0,B0,C1,SP estejam ativos
+ 6ce:	4b 99       	sbic	0x09, 3	; 9
+ 6d0:	b1 c0       	rjmp	.+354    	; 0x834 <loop+0x1e8>
+ 6d2:	4d 99       	sbic	0x09, 5	; 9
+ 6d4:	af c0       	rjmp	.+350    	; 0x834 <loop+0x1e8>
+ 6d6:	1b 99       	sbic	0x03, 3	; 3
+ 6d8:	ad c0       	rjmp	.+346    	; 0x834 <loop+0x1e8>
+ 6da:	4a 99       	sbic	0x09, 2	; 9
+ 6dc:	ab c0       	rjmp	.+342    	; 0x834 <loop+0x1e8>
+				{
+					while (rd_bit(PINC,PAUSE_BUT) == 0)		//Caso o botão de PAUSE sejá pressionado, permanecerá nesse loop
+ 6de:	33 9b       	sbis	0x06, 3	; 6
+ 6e0:	fe cf       	rjmp	.-4      	; 0x6de <loop+0x92>
+					{	
+					}
+					funcoes = prende;					//quando os sensores estão ativos, vai para o case "prende"
+ 6e2:	82 e0       	ldi	r24, 0x02	; 2
+ 6e4:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <funcoes>
+ 6e8:	08 95       	ret
+				}
+			}
+			else
+			{
+				cmd_LCD(0x01,0);
+ 6ea:	60 e0       	ldi	r22, 0x00	; 0
+ 6ec:	81 e0       	ldi	r24, 0x01	; 1
+ 6ee:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				cmd_LCD(0x80,0);
+ 6f2:	60 e0       	ldi	r22, 0x00	; 0
+ 6f4:	80 e8       	ldi	r24, 0x80	; 128
+ 6f6:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				escreve_LCD("Operacao");
+ 6fa:	85 ea       	ldi	r24, 0xA5	; 165
+ 6fc:	91 e0       	ldi	r25, 0x01	; 1
+ 6fe:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+				cmd_LCD(0xC0,0);
+ 702:	60 e0       	ldi	r22, 0x00	; 0
+ 704:	80 ec       	ldi	r24, 0xC0	; 192
+ 706:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+				escreve_LCD("Finalizada");
+ 70a:	8e ea       	ldi	r24, 0xAE	; 174
+ 70c:	91 e0       	ldi	r25, 0x01	; 1
+ 70e:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 712:	2f e7       	ldi	r18, 0x7F	; 127
+ 714:	84 e8       	ldi	r24, 0x84	; 132
+ 716:	9e e1       	ldi	r25, 0x1E	; 30
+ 718:	21 50       	subi	r18, 0x01	; 1
+ 71a:	80 40       	sbci	r24, 0x00	; 0
+ 71c:	90 40       	sbci	r25, 0x00	; 0
+ 71e:	e1 f7       	brne	.-8      	; 0x718 <loop+0xcc>
+ 720:	00 c0       	rjmp	.+0      	; 0x722 <loop+0xd6>
+ 722:	00 00       	nop
+				_delay_ms(10000);
+				contador_lotes = 0;
+ 724:	10 92 f2 01 	sts	0x01F2, r1	; 0x8001f2 <contador_lotes+0x1>
+ 728:	10 92 f1 01 	sts	0x01F1, r1	; 0x8001f1 <contador_lotes>
+				funcoes = configura;					//quando a operação for finalizada, vai para o case "configura"
+ 72c:	10 92 f3 01 	sts	0x01F3, r1	; 0x8001f3 <funcoes>
+ 730:	08 95       	ret
+			}
+		break;
+		
+		case prende:
+			cmd_LCD(0x80,0);
+ 732:	60 e0       	ldi	r22, 0x00	; 0
+ 734:	80 e8       	ldi	r24, 0x80	; 128
+ 736:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+			escreve_LCD("Prendendo peca   ");
+ 73a:	89 eb       	ldi	r24, 0xB9	; 185
+ 73c:	91 e0       	ldi	r25, 0x01	; 1
+ 73e:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 742:	2f e3       	ldi	r18, 0x3F	; 63
+ 744:	8d e0       	ldi	r24, 0x0D	; 13
+ 746:	93 e0       	ldi	r25, 0x03	; 3
+ 748:	21 50       	subi	r18, 0x01	; 1
+ 74a:	80 40       	sbci	r24, 0x00	; 0
+ 74c:	90 40       	sbci	r25, 0x00	; 0
+ 74e:	e1 f7       	brne	.-8      	; 0x748 <loop+0xfc>
+ 750:	00 c0       	rjmp	.+0      	; 0x752 <loop+0x106>
+ 752:	00 00       	nop
+			_delay_ms(1000);
+			set_bit(PORTB,CILC);						//Abre o cilindro C
+ 754:	2a 9a       	sbi	0x05, 2	; 5
+			set_bit(PORTB,CILA);						//Abre o cilindro A
+ 756:	28 9a       	sbi	0x05, 0	; 5
+			set_bit(PORTB,CILB);						//Abre o cilindro B
+ 758:	29 9a       	sbi	0x05, 1	; 5
+			if(((rd_bit(PIND,A1)) == 0) && ((rd_bit(PIND,B1)) == 0) && ((rd_bit(PINB,C1)) == 0) && ((rd_bit(PIND,SP)) == 0))		//caso os sensores A1,B1,C1,SP estejam ativos
+ 75a:	4c 99       	sbic	0x09, 4	; 9
+ 75c:	6b c0       	rjmp	.+214    	; 0x834 <loop+0x1e8>
+ 75e:	4e 99       	sbic	0x09, 6	; 9
+ 760:	69 c0       	rjmp	.+210    	; 0x834 <loop+0x1e8>
+ 762:	1b 99       	sbic	0x03, 3	; 3
+ 764:	67 c0       	rjmp	.+206    	; 0x834 <loop+0x1e8>
+ 766:	4a 99       	sbic	0x09, 2	; 9
+ 768:	65 c0       	rjmp	.+202    	; 0x834 <loop+0x1e8>
+			{
+				while (rd_bit(PINC,PAUSE_BUT) == 0)		//Caso o botão de PAUSE sejá pressionado, permanecerá nesse loop
+ 76a:	33 9b       	sbis	0x06, 3	; 6
+ 76c:	fe cf       	rjmp	.-4      	; 0x76a <loop+0x11e>
+				{
+				}
+				funcoes = enche;			//quando os sensores estão ativos, vai para o case "enche"
+ 76e:	83 e0       	ldi	r24, 0x03	; 3
+ 770:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <funcoes>
+ 774:	08 95       	ret
+			}
+		break;
+		
+		case enche:
+		
+			clr_bit(PORTB,CILC);						//Fecha o cilindro C
+ 776:	2a 98       	cbi	0x05, 2	; 5
+			set_bit(PORTB,CILA);						//Abre o cilindro A
+ 778:	28 9a       	sbi	0x05, 0	; 5
+			set_bit(PORTB,CILB);						//Abre o cilindro B
+ 77a:	29 9a       	sbi	0x05, 1	; 5
+			cmd_LCD(0x80,0);
+ 77c:	60 e0       	ldi	r22, 0x00	; 0
+ 77e:	80 e8       	ldi	r24, 0x80	; 128
+ 780:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+			escreve_LCD("Enchendo peca    ");
+ 784:	8b ec       	ldi	r24, 0xCB	; 203
+ 786:	91 e0       	ldi	r25, 0x01	; 1
+ 788:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+			if(((rd_bit(PIND,A1)) == 0) && ((rd_bit(PIND,B1)) == 0) && ((rd_bit(PIND,C0)) == 0) && ((rd_bit(PIND,SP)) == 0))
+ 78c:	4c 99       	sbic	0x09, 4	; 9
+ 78e:	52 c0       	rjmp	.+164    	; 0x834 <loop+0x1e8>
+ 790:	4e 99       	sbic	0x09, 6	; 9
+ 792:	50 c0       	rjmp	.+160    	; 0x834 <loop+0x1e8>
+ 794:	4f 99       	sbic	0x09, 7	; 9
+ 796:	4e c0       	rjmp	.+156    	; 0x834 <loop+0x1e8>
+ 798:	4a 99       	sbic	0x09, 2	; 9
+ 79a:	4c c0       	rjmp	.+152    	; 0x834 <loop+0x1e8>
+			{
+				while (rd_bit(PINC,PAUSE_BUT) == 0)					//Caso o botão de PAUSE sejá pressionado, permanecerá nesse loop
+ 79c:	33 9b       	sbis	0x06, 3	; 6
+ 79e:	fe cf       	rjmp	.-4      	; 0x79c <loop+0x150>
+				{
+				}
+				for (tempo_envase;tempo_envase>0;tempo_envase--)	//tempo que o cilindro C fica aberto em segundos. Diminui a variavel tempo de envase e multiplica por 100
+ 7a0:	80 91 06 02 	lds	r24, 0x0206	; 0x800206 <tempo_envase>
+ 7a4:	90 91 07 02 	lds	r25, 0x0207	; 0x800207 <tempo_envase+0x1>
+ 7a8:	18 16       	cp	r1, r24
+ 7aa:	19 06       	cpc	r1, r25
+ 7ac:	ac f4       	brge	.+42     	; 0x7d8 <loop+0x18c>
+ 7ae:	2f e3       	ldi	r18, 0x3F	; 63
+ 7b0:	8d e0       	ldi	r24, 0x0D	; 13
+ 7b2:	93 e0       	ldi	r25, 0x03	; 3
+ 7b4:	21 50       	subi	r18, 0x01	; 1
+ 7b6:	80 40       	sbci	r24, 0x00	; 0
+ 7b8:	90 40       	sbci	r25, 0x00	; 0
+ 7ba:	e1 f7       	brne	.-8      	; 0x7b4 <loop+0x168>
+ 7bc:	00 c0       	rjmp	.+0      	; 0x7be <loop+0x172>
+ 7be:	00 00       	nop
+ 7c0:	80 91 06 02 	lds	r24, 0x0206	; 0x800206 <tempo_envase>
+ 7c4:	90 91 07 02 	lds	r25, 0x0207	; 0x800207 <tempo_envase+0x1>
+ 7c8:	01 97       	sbiw	r24, 0x01	; 1
+ 7ca:	90 93 07 02 	sts	0x0207, r25	; 0x800207 <tempo_envase+0x1>
+ 7ce:	80 93 06 02 	sts	0x0206, r24	; 0x800206 <tempo_envase>
+ 7d2:	18 16       	cp	r1, r24
+ 7d4:	19 06       	cpc	r1, r25
+ 7d6:	5c f3       	brlt	.-42     	; 0x7ae <loop+0x162>
+				{
+					_delay_ms(1000);									
+				}
+				funcoes = retorna;									//quando os sensores estão ativos, vai para o case "retorna"
+ 7d8:	84 e0       	ldi	r24, 0x04	; 4
+ 7da:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <funcoes>
+ 7de:	08 95       	ret
+			}
+		break;
+			
+		case retorna:
+			set_bit(PORTB,CILC);
+ 7e0:	2a 9a       	sbi	0x05, 2	; 5
+			set_bit(PORTB,CILA);
+ 7e2:	28 9a       	sbi	0x05, 0	; 5
+			set_bit(PORTB,CILB);
+ 7e4:	29 9a       	sbi	0x05, 1	; 5
+			cmd_LCD(0x80,0);
+ 7e6:	60 e0       	ldi	r22, 0x00	; 0
+ 7e8:	80 e8       	ldi	r24, 0x80	; 128
+ 7ea:	0e 94 53 00 	call	0xa6	; 0xa6 <cmd_LCD>
+			escreve_LCD("Retornando...    ");
+ 7ee:	8d ed       	ldi	r24, 0xDD	; 221
+ 7f0:	91 e0       	ldi	r25, 0x01	; 1
+ 7f2:	0e 94 cb 00 	call	0x196	; 0x196 <escreve_LCD>
+ 7f6:	2f e3       	ldi	r18, 0x3F	; 63
+ 7f8:	82 e4       	ldi	r24, 0x42	; 66
+ 7fa:	9f e0       	ldi	r25, 0x0F	; 15
+ 7fc:	21 50       	subi	r18, 0x01	; 1
+ 7fe:	80 40       	sbci	r24, 0x00	; 0
+ 800:	90 40       	sbci	r25, 0x00	; 0
+ 802:	e1 f7       	brne	.-8      	; 0x7fc <loop+0x1b0>
+ 804:	00 c0       	rjmp	.+0      	; 0x806 <loop+0x1ba>
+ 806:	00 00       	nop
+			_delay_ms(5000);
+			if(((rd_bit(PIND,A1)) == 0) && ((rd_bit(PIND,B1)) == 0) && ((rd_bit(PINB,C1)) == 0) && ((rd_bit(PIND,SP)) == 0))
+ 808:	4c 99       	sbic	0x09, 4	; 9
+ 80a:	14 c0       	rjmp	.+40     	; 0x834 <loop+0x1e8>
+ 80c:	4e 99       	sbic	0x09, 6	; 9
+ 80e:	12 c0       	rjmp	.+36     	; 0x834 <loop+0x1e8>
+ 810:	1b 99       	sbic	0x03, 3	; 3
+ 812:	10 c0       	rjmp	.+32     	; 0x834 <loop+0x1e8>
+ 814:	4a 99       	sbic	0x09, 2	; 9
+ 816:	0e c0       	rjmp	.+28     	; 0x834 <loop+0x1e8>
+			{
+				while (rd_bit(PINC,PAUSE_BUT) == 0)		//caso o botão de PAUSE seja pressionado, mantém o usuário parado no loop
+ 818:	33 9b       	sbis	0x06, 3	; 6
+ 81a:	fe cf       	rjmp	.-4      	; 0x818 <loop+0x1cc>
+				{
+				}
+				funcoes = aguarda;						//quando os sensores estão ativos, volta para o case "aguarda"
+ 81c:	81 e0       	ldi	r24, 0x01	; 1
+ 81e:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <funcoes>
+				contador_lotes = contador_lotes + 1;	//acrescenta um no contador
+ 822:	80 91 f1 01 	lds	r24, 0x01F1	; 0x8001f1 <contador_lotes>
+ 826:	90 91 f2 01 	lds	r25, 0x01F2	; 0x8001f2 <contador_lotes+0x1>
+ 82a:	01 96       	adiw	r24, 0x01	; 1
+ 82c:	90 93 f2 01 	sts	0x01F2, r25	; 0x8001f2 <contador_lotes+0x1>
+ 830:	80 93 f1 01 	sts	0x01F1, r24	; 0x8001f1 <contador_lotes>
+ 834:	08 95       	ret
+
+00000836 <main>:
+
+//................................................................
+
+int main(void)
+{
+	setup();		//chama a função setup		
+ 836:	0e 94 db 00 	call	0x1b6	; 0x1b6 <setup>
+	senha();		//chama a função senha
+ 83a:	0e 94 e6 00 	call	0x1cc	; 0x1cc <senha>
+	cli();
+ 83e:	f8 94       	cli
+	PORTC = 0b00011100;
+ 840:	8c e1       	ldi	r24, 0x1C	; 28
+ 842:	88 b9       	out	0x08, r24	; 8
+	PCICR = (1<<PCIE1);
+ 844:	82 e0       	ldi	r24, 0x02	; 2
+ 846:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <__DATA_REGION_ORIGIN__+0x8>
+	PCMSK1 = (1<<PCINT10);	//define a entrada do botão parada de emergencia
+ 84a:	84 e0       	ldi	r24, 0x04	; 4
+ 84c:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <__DATA_REGION_ORIGIN__+0xc>
+	sei();
+ 850:	78 94       	sei
+    while (1) 
+    {
+		loop();
+ 852:	0e 94 26 03 	call	0x64c	; 0x64c <loop>
+ 856:	fd cf       	rjmp	.-6      	; 0x852 <main+0x1c>
+
+00000858 <__vector_4>:
+
+}
+
+
+ISR(PCINT1_vect)		//funcao de interrupcao do botão PARADA DE EMERGENCIA
+{
+ 858:	1f 92       	push	r1
+ 85a:	0f 92       	push	r0
+ 85c:	0f b6       	in	r0, 0x3f	; 63
+ 85e:	0f 92       	push	r0
+ 860:	11 24       	eor	r1, r1
+	if (flag == 0)		//caso seja apertado o botão
+ 862:	80 91 f0 01 	lds	r24, 0x01F0	; 0x8001f0 <__data_end>
+ 866:	81 11       	cpse	r24, r1
+ 868:	02 c0       	rjmp	.+4      	; 0x86e <__vector_4+0x16>
+	{
+		main ();		//volta para o main()
+ 86a:	0e 94 1b 04 	call	0x836	; 0x836 <main>
+ 86e:	ff cf       	rjmp	.-2      	; 0x86e <__vector_4+0x16>
+
+00000870 <strcmp>:
+ 870:	fb 01       	movw	r30, r22
+ 872:	dc 01       	movw	r26, r24
+ 874:	8d 91       	ld	r24, X+
+ 876:	01 90       	ld	r0, Z+
+ 878:	80 19       	sub	r24, r0
+ 87a:	01 10       	cpse	r0, r1
+ 87c:	d9 f3       	breq	.-10     	; 0x874 <strcmp+0x4>
+ 87e:	99 0b       	sbc	r25, r25
+ 880:	08 95       	ret
+
+00000882 <itoa>:
+ 882:	45 32       	cpi	r20, 0x25	; 37
+ 884:	51 05       	cpc	r21, r1
+ 886:	20 f4       	brcc	.+8      	; 0x890 <itoa+0xe>
+ 888:	42 30       	cpi	r20, 0x02	; 2
+ 88a:	10 f0       	brcs	.+4      	; 0x890 <itoa+0xe>
+ 88c:	0c 94 4c 04 	jmp	0x898	; 0x898 <__itoa_ncheck>
+ 890:	fb 01       	movw	r30, r22
+ 892:	10 82       	st	Z, r1
+ 894:	cb 01       	movw	r24, r22
+ 896:	08 95       	ret
+
+00000898 <__itoa_ncheck>:
+ 898:	bb 27       	eor	r27, r27
+ 89a:	4a 30       	cpi	r20, 0x0A	; 10
+ 89c:	31 f4       	brne	.+12     	; 0x8aa <__itoa_ncheck+0x12>
+ 89e:	99 23       	and	r25, r25
+ 8a0:	22 f4       	brpl	.+8      	; 0x8aa <__itoa_ncheck+0x12>
+ 8a2:	bd e2       	ldi	r27, 0x2D	; 45
+ 8a4:	90 95       	com	r25
+ 8a6:	81 95       	neg	r24
+ 8a8:	9f 4f       	sbci	r25, 0xFF	; 255
+ 8aa:	0c 94 58 04 	jmp	0x8b0	; 0x8b0 <__utoa_common>
+
+000008ae <__utoa_ncheck>:
+ 8ae:	bb 27       	eor	r27, r27
+
+000008b0 <__utoa_common>:
+ 8b0:	fb 01       	movw	r30, r22
+ 8b2:	55 27       	eor	r21, r21
+ 8b4:	aa 27       	eor	r26, r26
+ 8b6:	88 0f       	add	r24, r24
+ 8b8:	99 1f       	adc	r25, r25
+ 8ba:	aa 1f       	adc	r26, r26
+ 8bc:	a4 17       	cp	r26, r20
+ 8be:	10 f0       	brcs	.+4      	; 0x8c4 <__utoa_common+0x14>
+ 8c0:	a4 1b       	sub	r26, r20
+ 8c2:	83 95       	inc	r24
+ 8c4:	50 51       	subi	r21, 0x10	; 16
+ 8c6:	b9 f7       	brne	.-18     	; 0x8b6 <__utoa_common+0x6>
+ 8c8:	a0 5d       	subi	r26, 0xD0	; 208
+ 8ca:	aa 33       	cpi	r26, 0x3A	; 58
+ 8cc:	08 f0       	brcs	.+2      	; 0x8d0 <__utoa_common+0x20>
+ 8ce:	a9 5d       	subi	r26, 0xD9	; 217
+ 8d0:	a1 93       	st	Z+, r26
+ 8d2:	00 97       	sbiw	r24, 0x00	; 0
+ 8d4:	79 f7       	brne	.-34     	; 0x8b4 <__utoa_common+0x4>
+ 8d6:	b1 11       	cpse	r27, r1
+ 8d8:	b1 93       	st	Z+, r27
+ 8da:	11 92       	st	Z+, r1
+ 8dc:	cb 01       	movw	r24, r22
+ 8de:	0c 94 71 04 	jmp	0x8e2	; 0x8e2 <strrev>
+
+000008e2 <strrev>:
+ 8e2:	dc 01       	movw	r26, r24
+ 8e4:	fc 01       	movw	r30, r24
+ 8e6:	67 2f       	mov	r22, r23
+ 8e8:	71 91       	ld	r23, Z+
+ 8ea:	77 23       	and	r23, r23
+ 8ec:	e1 f7       	brne	.-8      	; 0x8e6 <strrev+0x4>
+ 8ee:	32 97       	sbiw	r30, 0x02	; 2
+ 8f0:	04 c0       	rjmp	.+8      	; 0x8fa <strrev+0x18>
+ 8f2:	7c 91       	ld	r23, X
+ 8f4:	6d 93       	st	X+, r22
+ 8f6:	70 83       	st	Z, r23
+ 8f8:	62 91       	ld	r22, -Z
+ 8fa:	ae 17       	cp	r26, r30
+ 8fc:	bf 07       	cpc	r27, r31
+ 8fe:	c8 f3       	brcs	.-14     	; 0x8f2 <strrev+0x10>
+ 900:	08 95       	ret
+
+00000902 <_exit>:
+ 902:	f8 94       	cli
+
+00000904 <__stop_program>:
+ 904:	ff cf       	rjmp	.-2      	; 0x904 <__stop_program>
